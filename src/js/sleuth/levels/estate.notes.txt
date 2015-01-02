@@ -1,0 +1,91 @@
+1 - Entrance Hall
+2 - Billiard Room
+3 - Library
+4 - Parlour
+5 - Kitchen
+6 - Dining Room
+7 - Conservatory
+8 - Ballroom
+. - Lawn
+: - Entrance Steps
+# - Wall
++ - Door (closed)
+/ - Door (open)
+
+Colonel Dijon was brutally murdered in his home only hours ago.
+
+After rushing to the crime scene, you’re standing at the front door to the sprawling plantation estate.
+
+The door is locked. Press [E] to ring the doorbell.
+
+Jeeves the butler opens the door. He seems agitated and upset.
+
+You’re in the entrance hall. Jeeves the butler is here. Press [Q] to question Jeeves.
+
+“This is just so horribly tragic,” says Jeeves.
+
+“I really couldn’t say,” says Jeeves. “I’m just so terribly shaken up by all this.”
+
+“I was in the ballroom when I heard the scream,” says Jeeves. “By then, it was too late.”
+
+Jeeves shakes his head and won’t say anything further.
+
+You’re in the ballroom. Once upon a time, the grand events hosted here would have been the talk of the county. Not these days, though.
+
+This room was used as a hospital for wounded confederate soldiers during the civil war.
+
+The historical significance is somewhat undermined by the dilapidated state of the furnishings.
+
+It has seen better days.
+
+You’re in the library. Floor to ceiling shelves house a vast collection of books on military history.
+
+Mr Bell is here. Press [Q] to question Mr Bell.
+
+“I’ve been here in the library the whole time. Ask Claudia. She was here too, when it happened.”
+
+Mr Bell looks at the floor and won’t say anything further.
+
+You’re in the conservatory.
+
+Claudia is here. Press [Q] to question Claudia.
+
+“I just don’t know how anyone could do such a thing.”
+
+“I was in the library with Mr Bell. I didn’t see what happened.”
+
+Claudia frowns at you and won’t say anything further.
+
+You’re in the Billiard Room. William is here. Press [Q] to question William.
+
+“I was in the kitchen, talking to George,” says William.
+
+“Shocking, isn’t it?”
+
+William glares at you and won’t say anything further.
+
+You can’t assemble the suspects until you find the murder weapon.
+
+You’re in the parlor. George is here. Press [Q] to question George.
+
+“Such a waste of a life.”
+
+“I was with Rebecca. That’s all I’ve got to say.”
+
+George glances anxiously around the room and won’t talk further.
+
+You’re in the dining room. Colonel Dijon is still seated at the table where he died, slumped forward in a puddle of spilled soup on the tablecloth.
+
+You’re in the kitchen.
+
+There’s a large pot of soup cooling on the stove.
+
+The soup has a sickly sweet tang that stings your throat when you inhale it. Reddish brown crystals are starting to form on the sides of the pot. It’s poisoned!
+
+Rebecca is here.
+
+“I wasn’t in the room when it happened,” says Rebecca. “But I did see Jeeves in the ballroom right after.”
+
+“You weren’t supposed to be here,” says William. “But that’s okay. This is the end for you, but I’ve still got a chance to run.”
+
+You are dead.
