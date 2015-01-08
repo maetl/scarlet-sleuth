@@ -67,6 +67,13 @@
           return new Rung.Value().integer(1,7) * multiplier;
         }
       }
+    },
+
+    Array: {
+      shuffle: function(o) {
+        for(var j, x, i = o.length; i; j = parseInt(Rung.number() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+      }
     }
 
   }

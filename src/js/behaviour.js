@@ -16,15 +16,9 @@ Behaviour.prototype.wander = function() {
 	var currentX = this.entity.getX();
 	var currentY = this.entity.getY();
 
-	// TODO: extract to RNG helper
-	function shuffle(o) {
-		for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-		return o;
-	};
-
 	// TODO: extract to cardinal direction object
 	// TODO: clean up array shuffle
-	var directions = shuffle([[0, -1], [1, 0], [0, 1], [-1, 0]]);
+	var directions = Rung.Array.shuffle([[0, -1], [1, 0], [0, 1], [-1, 0]]);
 
 	for(var d = 0; d < 4; d++) {
 		var tileX = currentX + directions[d][0];
