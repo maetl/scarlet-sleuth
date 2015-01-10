@@ -4,10 +4,6 @@ var Map = function(tiles) {
     this.width = this.tiles[0].length;
     this.height = this.tiles.length;
 
-    // TODO: is this still needed?
-    this.scheduler = new ROT.Scheduler.Speed();
-    this.engine = new ROT.Engine(this.scheduler);
-
     this.entities = {};
 }
 
