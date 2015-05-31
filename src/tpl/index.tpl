@@ -7,7 +7,9 @@
         {{{css_link_tags}}}
     </head>
     <body>
-    <div id="game"></div>
+    <div id="game">
+        <canvas id="display"></canvas>
+    </div>
     {{{js_script_tags}}}
     </body>
 </html>

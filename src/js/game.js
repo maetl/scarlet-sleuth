@@ -13,18 +13,28 @@ var Game = {};
 function gameLoop(timestamp) {
     updateGameState();
     renderMap();
-    renderStory();
-    renderHud();
+    //renderStory();
+    //renderHud();
 }
 
 function main() {
-    Game.console = new ROT.Display({
-        width: 100,
-        height: 30,
-        fontFamily: "Consolas, monaco, monospace"
-    });
+    // Game.console = new ROT.Display({
+    //     width: 100,
+    //     height: 30,
+    //     fontFamily: "Consolas, monaco, monospace"
+    // });
 
-    $("#game").append(Game.console.getContainer());
+    var canvas = document.querySelector('#display');
+
+    var vWidth = document.documentElement.clientWidth;
+    var vHeight = document.documentElement.clientHeight;
+
+    canvas.style.width = vWidth.toString() + "px";
+    canvas.style.height = vHeight.toString() + "px";
+
+
+    Game.terminal = new Overprint.Terminal(70, 30, canvas);
+    //$("#game").append(Game.console.getContainer());
 
     Game.turns = 0;
     Game.suspects = [];
@@ -140,7 +150,7 @@ var largeMapDefinition = [
 
 function renderMap() {
 
-    Game.console.clear();
+    //Game.console.clear();
 
     var map = Game.map;
 
@@ -169,26 +179,25 @@ function renderMap() {
 
             // TODO: check for entities and items at this location
             if (x == playerX && y == playerY) {
-                var glyph = '@';
-                var color = '#fff';
+                var cell = TilePalette.PC.getCell();
             } else if (suspect = map.getEntityAt(x, y)) {
-                var glyph = '@';
-                var color = '#ff69b4';
-
+                var cell = TilePalette.NPC.getCell();
             } else {
-                var glyph = tile.getGlyph();
-                var color = tile.getColor();
+                var cell = tile.getCell();
             }
 
-            Game.console.draw(
-                x - topLeftX,
-                y - topLeftY,
-                glyph,
-                color,
-                tile.getBackgroundColor()
-            );
+            Game.terminal.writeGlyph(x - topLeftX, y - topLeftY, cell);
+            // Game.console.draw(
+            //     x - topLeftX,
+            //     y - topLeftY,
+            //     glyph,
+            //     color,
+            //     tile.getBackgroundColor()
+            // );
         }
     }
+
+    Game.terminal.render();
 
     window.requestAnimationFrame(gameLoop);
 }

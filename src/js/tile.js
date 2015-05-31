@@ -6,6 +6,7 @@ var Tile = function(properties) {
 	this.color = properties['color'] || "#fff";
 	this.backgroundColor = properties['backgroundColor'] || "#000";
 	this.area = false;
+	this.cell = Overprint.Glyph(this.glyph, this.color, this.backgroundColor);
 }
 
 Tile.prototype.defineArea = function(area) {
@@ -25,6 +26,10 @@ Tile.prototype.getBackgroundColor = function() {
 
 Tile.prototype.getGlyph = function() {
 	return this.glyph;
+}
+
+Tile.prototype.getCell = function() {
+	return this.cell;
 }
 
 Tile.prototype.isWalkable = function() {
