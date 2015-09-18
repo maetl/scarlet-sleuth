@@ -1,3 +1,4 @@
+require "rake/notes/rake_task"
 require "yarrow"
 require "yarrow/output/context"
 require "coffee-script"
