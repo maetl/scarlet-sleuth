@@ -4,6 +4,10 @@ A retro murder mystery game.
 
 A remake of the 1983 DOS game [Sleuth](http://en.wikipedia.org/wiki/Sleuth_(video_game) with expanded elements influenced by modern roguelikes.
 
+### Resources
+
+- http://www.colourlovers.com/pattern/4642425/Koini
+
 ### Concepts
 
 *Possible Eras:*
