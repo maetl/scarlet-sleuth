@@ -1,11 +1,7 @@
 body {
 	background-color: #000;
-	font-family: monospace;
 	margin: 0;
 	padding: 0;
-	overflow: none;
+	overflow: hidden;
 }
 
-#game {
-	margin: 0;
-}

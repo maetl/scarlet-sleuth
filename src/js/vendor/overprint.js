@@ -49,7 +49,7 @@ Overprint.Terminal = function(width, height, canvas, font) {
 	this._width = width;
 	this._height = height;
 	this._canvas = canvas;
-	this._font = font || Overprint.Font('inconsolata', 'normal');
+	this._font = font || Overprint.Font('monospace', 'normal');
 
 	this._context = this._canvas.getContext('2d');
 
@@ -94,6 +94,17 @@ Overprint.Terminal.prototype.fill = function(glyph) {
 
 Overprint.Terminal.prototype.writeGlyph = function(x, y, glyph) {
 	this._display.setCell(x, y, glyph);
+}
+
+Overprint.Terminal.prototype.writeText = function(x, y, text) {
+	var cursorPosition = 0;
+	var endPosition = this._width - x;
+
+	while (cursorPosition <= endPosition) {
+		var textGlyph = Overprint.Glyph(text[cursorPosition]);
+		this._display.setCell(cursorPosition + x, y, textGlyph);
+		cursorPosition++;
+	}
 }
 
 Overprint.Terminal.prototype.render = function() {

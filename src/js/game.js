@@ -14,7 +14,7 @@ function gameLoop(timestamp) {
     updateGameState();
     renderMap();
     //renderStory();
-    //renderHud();
+    renderHud();
 }
 
 function main() {
@@ -28,12 +28,15 @@ function main() {
 
     var vWidth = document.documentElement.clientWidth;
     var vHeight = document.documentElement.clientHeight;
+    //var vWidth = 1280;
+    //var vHeight = 640;
 
+    // TODO: decide on fixed width or resizable (and how to handle breakpoints)
     canvas.style.width = vWidth.toString() + "px";
     canvas.style.height = vHeight.toString() + "px";
 
 
-    Game.terminal = new Overprint.Terminal(70, 30, canvas);
+    Game.terminal = new Overprint.Terminal(100, 30, canvas);
     //$("#game").append(Game.console.getContainer());
 
     Game.turns = 0;
@@ -88,6 +91,7 @@ function handleInputAction(keyCode) {
     }
 
     Game.player.addNextAction(action);
+    Game.turns++;
 }
 
 var mapDefinition = [
@@ -219,14 +223,14 @@ function renderStory() {
 }
 
 function renderHud() {
-    Game.console.drawText(71, 27, "Weapon:");
-    Game.console.drawText(81, 27, Game.player.murderWeapon());
+    Game.terminal.writeText(71, 27, "Weapon:");
+    Game.terminal.writeText(81, 27, Game.player.murderWeapon());
 
-    Game.console.drawText(71, 28, "Suspects:");
-    Game.console.drawText(81, 28, Game.player.suspectsMet().toString() + " of " + Game.suspects.length.toString());
+    Game.terminal.writeText(71, 28, "Suspects:");
+    Game.terminal.writeText(81, 28, Game.player.suspectsMet().toString() + " of " + Game.suspects.length.toString());
 
-    Game.console.drawText(71, 29, "Turns:");
-    Game.console.drawText(81, 29, Game.turns.toString());
+    Game.terminal.writeText(71, 29, "Turns:");
+    Game.terminal.writeText(81, 29, Game.turns.toString());
 }
 
 $(main);
