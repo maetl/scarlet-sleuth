@@ -68,6 +68,10 @@ Entity.prototype.moveTo = function(x, y) {
 	var toY = this.y + y;
 
 	var tile = this.map.getTile(toX, toY);
+
+	// Skip if the move position is not a valid tile
+	if (!tile) return;
+
 	var entity = this.map.getEntityAt(toX, toY);
 
 	if (entity) {

@@ -3,20 +3,20 @@ var TilePalette = {};
 TilePalette.Wall = new Tile({
 	glyph: "#",
 	color: "#F1D7A5",
-	backgroundColor: "#222"
+	//backgroundColor: "#222"
 });
 
 TilePalette.Floor = new Tile({
 	glyph: ".",
-	color: "#222",
-	backgroundColor: "#f4a460",
+	color: "#f4a460",
+	//backgroundColor: "#f4a460",
 	walkable: true,
 });
 
 TilePalette.Lawn = new Tile({
 	glyph: ".",
 	color: "#01C811",
-	backgroundColor: '#01A611',
+	//backgroundColor: '#01A611',
 	walkable: true,
 });
 

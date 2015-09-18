@@ -23,14 +23,14 @@ Behaviour.prototype.wander = function() {
 	for(var d = 0; d < 4; d++) {
 		var tileX = currentX + directions[d][0];
 		var tileY = currentY + directions[d][1];
+		var tile = this.map.getTile(tileX, tileY);
 
-		// TODO: bounds check (currently if NPCs walk off the map it crashes the game)
-		if (this.map.getTile(tileX, tileY).isWalkable()) {
+		// If tile in the given direction is walkable then move to it
+		if (tile && tile.isWalkable()) {
 			return new MoveAction(directions[d]);
 		}
 	}
 
 	// If no movement in a direction, then stand still
 	return new RestAction();
-
 }
