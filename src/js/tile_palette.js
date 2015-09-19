@@ -48,6 +48,6 @@ TilePalette.PC = new Tile({
 });
 
 TilePalette.NPC = new Tile({
-	glyph: "?",
+	glyph: "Q",
 	color: "#ff69b4",
 });

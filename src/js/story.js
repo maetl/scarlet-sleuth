@@ -9,14 +9,14 @@ Story.prototype.getActors = function() {
             y: 20,
             name: "Jeeves",
             story: '"This is just so horribly tragic," says Jeeves.',
-            mood: 'anxious'
+            mood: 'tense'
         }),
         new Suspect({
             x: 22,
             y: 15,
             name: "Mr Bell",
             story: '"I\'ve been here in the library the whole time. Ask Claudia. She was here too, when it happened."',
-            mood: 'anxious'
+            mood: 'nonchalant'
         }),
         new Suspect({
             x: 15,

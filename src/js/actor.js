@@ -23,12 +23,19 @@ var Suspect = function(properties) {
 Suspect.prototype = Object.create(Actor.prototype);
 
 Suspect.prototype.takeTurn = function() {
-  // TODO: check if player is in the same room before wandering
-  if (this.mood == 'anxious') {
-    return this.behaviour.wander();
+  // TODO: check if player is in the same room to determine mood
+  switch(this.mood) {
+    case 'tense':
+      return this.behaviour.pace();
+    break;
+
+    case 'anxious':
+      return this.behaviour.wander();
+    break;
+
+    default:
+      return this.behaviour.rest();
+    break;
   }
-
-  return this.behaviour.rest();
 }
-
 
