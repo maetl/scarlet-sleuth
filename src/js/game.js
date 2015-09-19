@@ -36,7 +36,8 @@ function main() {
     canvas.style.width = vWidth.toString() + "px";
     canvas.style.height = vHeight.toString() + "px";
 
-    Game.terminal = new Overprint.Terminal(100, 30, canvas);
+    var font = Overprint.Font('monospace', 'normal');
+    Game.terminal = new Overprint.Terminal(100, 30, canvas, font);
     //$("#game").append(Game.console.getContainer());
 
     Game.turns = 0;

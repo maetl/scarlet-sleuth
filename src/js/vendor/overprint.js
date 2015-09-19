@@ -49,7 +49,7 @@ Overprint.Terminal = function(width, height, canvas, font) {
 	this._width = width;
 	this._height = height;
 	this._canvas = canvas;
-	this._font = font || Overprint.Font('monospace', 'normal');
+	this._font = font || Overprint.Font('inconsolata', 'normal');
 
 	this._context = this._canvas.getContext('2d');
 
@@ -122,6 +122,81 @@ Overprint.Terminal.prototype.render = function() {
 		var xPos = (x * cellWidth) + cellWidth / 2;
 		var yPos = (y * cellHeight) + cellHeight / 2;
 		this._context.fillText(glyph.char, xPos, yPos);
+	}.bind(this));
+}
+
+Overprint.Trigrid = function(width, height, canvas) {
+	this._width = width;
+	this._height = height;
+	this._canvas = canvas;
+
+	this._context = this._canvas.getContext('2d');
+
+	this.resetLayout();
+
+	var cell = this._emptyCell = Overprint.Glyph();
+	this._display = new Overprint.DisplayState(width, height, cell);	
+}
+
+Overprint.Trigrid.prototype.resetLayout = function() {
+	if (!this._canvas.style.width) this._canvas.style.width = 640;
+	if (!this._canvas.style.height) this._canvas.style.height = 480;
+
+	var elementWidth = parseInt(this._canvas.style.width, 10);
+	var elementHeight = parseInt(this._canvas.style.height, 10);
+
+	this._canvas.width = elementWidth;
+	this._canvas.height = elementHeight;
+
+	this._cellWidth = elementWidth / this._width;
+	this._cellHeight = elementHeight / this._height;
+}
+
+// TODO: +api work out the best value obj structure to pass here instead of glyph
+Overprint.Trigrid.prototype.writeCell = function(x, y, glyph) {
+	this._display.setCell(x, y, glyph);
+}
+
+Overprint.Trigrid.prototype.render = function() {
+	this._display.render(function(x, y, glyph){
+		var cellWidth = this._cellWidth;
+		var cellHeight = this._cellHeight;
+
+		var cellHalfWidth = cellWidth / 2;
+
+		var yFloor = y * cellHeight;
+		var yCeil = (y * cellHeight) + cellHeight;
+
+		var yVertex = yFloor;
+		var yBase = yCeil;
+		var xVertex = x * cellWidth;
+		var xBaseFloor = xVertex;
+		var xBaseCeil = xVertex + cellWidth;
+
+		this._context.fillStyle = glyph.bgColor;
+		this._context.beginPath();
+		this._context.moveTo(xVertex, yVertex);
+		this._context.lineTo(xBaseFloor, yBase);
+		this._context.lineTo(xBaseCeil, yBase);
+		this._context.fill();
+		this._context.lineWidth = 1;
+		this._context.closePath();
+		this._context.strokeStyle = glyph.bgColor;
+		this._context.stroke();
+
+		this._context.fillStyle = glyph.bgColor;
+		this._context.beginPath();
+		this._context.moveTo(xVertex, yVertex);
+		this._context.lineTo(xBaseCeil, yFloor);
+		this._context.lineTo(xBaseCeil, yCeil);
+		this._context.fill();
+		this._context.lineWidth = 1;
+		this._context.closePath();
+		this._context.strokeStyle = glyph.bgColor;
+		this._context.stroke();
+
+		if (glyph.char == Overprint.Char.NULL) return;
+		// Text not rendered for this grid type (yet)
 	}.bind(this));
 }
 
