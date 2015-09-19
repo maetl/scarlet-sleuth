@@ -5,19 +5,19 @@ var Entity = function(properties) {
 	this.color = properties['color'] || '#fff';
 
 	this.x = properties['x'] || 0;
-    this.y = properties['y'] || 0;
+  this.y = properties['y'] || 0;
 
-    this.nextAction = false;
+  this.nextAction = false;
 
-    // TODO: placeholder to mark NPC
-    this.npcState = properties['npcState'] || true;
+  // TODO: placeholder to mark NPC
+  this.npcState = properties['npcState'] || true;
 
-    this.mood = properties['mood'] || 'idle';
+  this.mood = properties['mood'] || 'idle';
 
-    this.story = properties['story'];
+  this.story = properties['story'];
 
-    // TODO: fix map binding in constructor rather than accessor
-    this.behaviour = new Behaviour(this, {});
+  // TODO: fix map binding in constructor rather than accessor
+  this.behaviour = new Behaviour(this, {});
 }
 
 Entity.prototype.getGlyph = function() {
