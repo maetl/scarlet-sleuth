@@ -70,9 +70,22 @@
     },
 
     Array: {
-      shuffle: function(o) {
-        for(var j, x, i = o.length; i; j = parseInt(Rung.number() * i), x = o[--i], o[i] = o[j], o[j] = x);
-        return o;
+      shuffle: function(array) {
+        var result = array.slice(0);
+        var currentIndex = array.length;
+        var temporaryValue;
+        var randomIndex;
+
+        while (0 !== currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+
+          temporaryValue = result[currentIndex];
+          result[currentIndex] = result[randomIndex];
+          result[randomIndex] = temporaryValue;
+        }
+
+        return result;
       }
     }
 

@@ -12,12 +12,15 @@ Behaviour.prototype.rest = function() {
 	return new RestAction();
 }
 
+Behaviour.prototype.pace = function() {
+
+}
+
 Behaviour.prototype.wander = function() {
 	var currentX = this.entity.getX();
 	var currentY = this.entity.getY();
 
 	// TODO: extract to cardinal direction object
-	// TODO: clean up array shuffle
 	var directions = Rung.Array.shuffle([[0, -1], [1, 0], [0, 1], [-1, 0]]);
 
 	for(var d = 0; d < 4; d++) {
