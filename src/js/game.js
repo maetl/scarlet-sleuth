@@ -56,8 +56,8 @@ function main() {
     Game.actors = Game.map.getEntities();
     Game.currentActor = 0;
 
-    $(document).keydown(function(ev) {
-        handleInputAction(ev.which);
+    document.addEventListener("keydown", function(ev) {
+      handleInputAction(ev.which);
     });
 
     window.requestAnimationFrame(gameLoop);
@@ -245,4 +245,4 @@ function renderHud() {
   Game.terminal.writeText(81, 29, Game.turns.toString());
 }
 
-$(main);
+document.addEventListener("DOMContentLoaded", main);
