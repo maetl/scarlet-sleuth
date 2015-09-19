@@ -16,6 +16,7 @@ Actor.prototype.talk = function() {
 }
 
 var Suspect = function(properties) {
+  this.name = properties['name'] || 'Stranger';
   Actor.call(this, properties);
 }
 
