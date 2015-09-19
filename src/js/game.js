@@ -14,23 +14,17 @@ var Game = {};
 function gameLoop(timestamp) {
     updateGameState();
     renderMap();
-    //renderStory();
+    renderStory();
     renderHud();
 }
 
 function main() {
-    // Game.console = new ROT.Display({
-    //     width: 100,
-    //     height: 30,
-    //     fontFamily: "Consolas, monaco, monospace"
-    // });
-
     var canvas = document.querySelector('#display');
 
     //var vWidth = document.documentElement.clientWidth;
     //var vHeight = document.documentElement.clientHeight;
-    var vWidth = 1300;
-    var vHeight = 390;
+    var vWidth = 1200;
+    var vHeight = 360;
 
     // TODO: decide on fixed width or resizable (and how to handle breakpoints)
     canvas.style.width = vWidth.toString() + "px";
@@ -38,7 +32,6 @@ function main() {
 
     var font = Overprint.Font('monospace', 'normal');
     Game.terminal = new Overprint.Terminal(100, 30, canvas, font);
-    //$("#game").append(Game.console.getContainer());
 
     Game.turns = 0;
     Game.suspects = [];
@@ -155,8 +148,6 @@ var largeMapDefinition = [
 
 function renderMap() {
 
-    //Game.console.clear();
-
     var map = Game.map;
 
     // TODO: extract as accessor methods
@@ -192,13 +183,6 @@ function renderMap() {
             }
 
             Game.terminal.writeGlyph(x - topLeftX, y - topLeftY, cell);
-            // Game.console.draw(
-            //     x - topLeftX,
-            //     y - topLeftY,
-            //     glyph,
-            //     color,
-            //     tile.getBackgroundColor()
-            // );
         }
     }
 
@@ -208,32 +192,57 @@ function renderMap() {
 }
 
 function renderStory() {
-    // TODO: use story object/state machine
-    var story = false;
+  //TODO: use story object/state machine
+  var story = false;
 
-    if (story) {
-        // Dialog goes here
-    } else {
-        var currentTile = Game.map.getTile(Game.player.getX(), Game.player.getY());
-        var description = currentTile.getDescription();
+  if (story) {
+    // Dialog goes here
+  } else {
+    var currentTile = Game.map.getTile(Game.player.getX(), Game.player.getY());
+    var description = currentTile.getDescription();
+  }
+
+  // TODO: accessor for canvas size
+  var textWidth = (100 - 71) - 2;
+
+  if (Game.description && Game.description != description) {
+    // Clear story area before redrawing
+    for (var r = 0; r < 10; r++) {
+      for (var c = 71; c < 100; c++) {
+        Game.terminal.writeGlyph(c, r, Overprint.Glyph());
+      }
     }
-    
-    // TODO: accessor for canvas size
-    var textWidth = (100 - 71) - 2;
-    Game.console.drawText(71, 0, description, textWidth);
+  }
+
+  Game.description = description;
+
+  // TODO: this really needs tidying up and probably should be part of the terminal API
+  var tokens = ROT.Text.tokenize(description, textWidth);
+  var row = 0;
+
+  while (tokens.length) {
+    var token = tokens.shift();
+    switch (token.type) {
+      case ROT.Text.TYPE_TEXT:
+        Game.terminal.writeText(71, row, token.value, textWidth);
+      break;
+
+      case ROT.Text.TYPE_NEWLINE:
+        row++;
+      break;
+    }
+  }
 }
 
 function renderHud() {
-    Game.terminal.writeText(71, 27, "Weapon:");
-    Game.terminal.writeText(81, 27, Game.player.murderWeapon());
+  Game.terminal.writeText(71, 27, "Weapon:");
+  Game.terminal.writeText(81, 27, Game.player.murderWeapon());
 
-    Game.terminal.writeText(71, 28, "Suspects:");
-    Game.terminal.writeText(81, 28, Game.player.suspectsMet().toString() + " of " + Game.suspects.length.toString());
+  Game.terminal.writeText(71, 28, "Suspects:");
+  Game.terminal.writeText(81, 28, Game.player.suspectsMet().toString() + " of " + Game.suspects.length.toString());
 
-    Game.terminal.writeText(71, 29, "Turns:");
-    Game.terminal.writeText(81, 29, Game.turns.toString());
+  Game.terminal.writeText(71, 29, "Turns:");
+  Game.terminal.writeText(81, 29, Game.turns.toString());
 }
 
 $(main);
-
-//$(window).on('resize', onResize);
