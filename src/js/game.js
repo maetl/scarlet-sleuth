@@ -27,15 +27,14 @@ function main() {
 
     var canvas = document.querySelector('#display');
 
-    var vWidth = document.documentElement.clientWidth;
-    var vHeight = document.documentElement.clientHeight;
-    //var vWidth = 1280;
-    //var vHeight = 640;
+    //var vWidth = document.documentElement.clientWidth;
+    //var vHeight = document.documentElement.clientHeight;
+    var vWidth = 1300;
+    var vHeight = 390;
 
     // TODO: decide on fixed width or resizable (and how to handle breakpoints)
     canvas.style.width = vWidth.toString() + "px";
     canvas.style.height = vHeight.toString() + "px";
-
 
     Game.terminal = new Overprint.Terminal(100, 30, canvas);
     //$("#game").append(Game.console.getContainer());
