@@ -49,7 +49,7 @@ Overprint.Terminal = function(width, height, canvas, font) {
 	this._width = width;
 	this._height = height;
 	this._canvas = canvas;
-	this._font = font || Overprint.Font('monospace', 'normal');
+	this._font = font || Overprint.Font('inconsolata', 'normal');
 
 	this._context = this._canvas.getContext('2d');
 
