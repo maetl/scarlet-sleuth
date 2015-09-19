@@ -1,6 +1,6 @@
 var RestAction = function() {}
 
-RestAction.prototype.perform = function(actor) {
+RestAction.prototype.perform = function(entity) {
 	return;
 }
 
@@ -21,6 +21,6 @@ MoveAction.prototype.getY = function() {
     return this.y;
 }
 
-MoveAction.prototype.perform = function(actor) {
-	actor.moveTo(this.getX(), this.getY());
+MoveAction.prototype.perform = function(entity) {
+	entity.moveTo(this.getX(), this.getY());
 }

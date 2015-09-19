@@ -9,10 +9,8 @@ Actor.prototype.takeTurn = function() {
   return new RestAction();
 }
 
-// TODO: create a bump callback which fires every time the player
-// bumps into an actor
 Actor.prototype.talk = function() {
-  Game.story = this.story;
+  return this.story;
 }
 
 var Suspect = function(properties) {

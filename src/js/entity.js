@@ -47,6 +47,16 @@ Entity.prototype.getY = function() {
 	return this.y;
 }
 
+Entity.prototype.hasViewpoint = function() {
+  return false;
+}
+
+Entity.prototype.bump = function(entity) {
+  if (entity.talk && this.hasViewpoint()) {
+    Game.currentConversation = entity.talk();
+  }
+}
+
 Entity.prototype.moveTo = function(x, y) {
 	var toX = this.x + x;
 	var toY = this.y + y;
@@ -60,7 +70,7 @@ Entity.prototype.moveTo = function(x, y) {
 
 	if (entity) {
 		// TODO: deal with player vs actors here
-		entity.talk();
+		this.bump(entity);
 	} else if (tile.isWalkable()) {
 		this.setPosition(toX, toY);
 	} else if (tile.isOpenable()) {

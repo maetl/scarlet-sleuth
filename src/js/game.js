@@ -192,11 +192,9 @@ function renderMap() {
 }
 
 function renderStory() {
-  //TODO: use story object/state machine
-  var story = false;
-
-  if (story) {
-    // Dialog goes here
+  if (Game.currentConversation) {
+    // TODO: this could be greatly improved by integrating with the actions system
+    var description = Game.currentConversation;
   } else {
     var currentTile = Game.map.getTile(Game.player.getX(), Game.player.getY());
     var description = currentTile.getDescription();

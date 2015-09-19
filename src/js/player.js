@@ -4,6 +4,10 @@ var Player = function(properties) {
 
 Player.prototype = Object.create(Actor.prototype);
 
+Player.prototype.hasViewpoint = function() {
+  return true;
+}
+
 Player.prototype.suspectsMet = function() {
     return 0;
 }
@@ -19,5 +23,6 @@ Player.prototype.takeTurn = function() {
 }
 
 Entity.prototype.addNextAction = function(action) {
+  Game.currentConversation = false;
 	this.nextAction = action;
 }
