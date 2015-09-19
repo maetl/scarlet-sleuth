@@ -1,8 +1,8 @@
 var Player = function(properties) {
-	Entity.call(this, properties);
+	Actor.call(this, properties);
 }
 
-Player.prototype = Object.create(Entity.prototype);
+Player.prototype = Object.create(Actor.prototype);
 
 Player.prototype.suspectsMet = function() {
     return 0;

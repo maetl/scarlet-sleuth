@@ -2,9 +2,9 @@ var Story = function() {
 	//
 }
 
-Story.prototype.getEntities = function() {
+Story.prototype.getActors = function() {
 	return [
-        new Entity({
+        new Suspect({
             x: 42,
             y: 20,
             color: '#ff69b4',
@@ -12,7 +12,7 @@ Story.prototype.getEntities = function() {
             story: '"This is just so horribly tragic," says Jeeves.',
             mood: 'anxious'
         }),
-        new Entity({
+        new Suspect({
             x: 22,
             y: 15,
             color: '#ff69b4',
@@ -20,7 +20,7 @@ Story.prototype.getEntities = function() {
             story: '"I\'ve been here in the library the whole time. Ask Claudia. She was here too, when it happened."',
             mood: 'anxious'
         }),
-        new Entity({
+        new Suspect({
             x: 15,
             y: 12,
             color: '#ff69b4',

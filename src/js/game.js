@@ -3,6 +3,7 @@
 //= require tile_palette
 //= require behaviour
 //= require entity
+//= require actor
 //= require player
 //= require action
 //= require story
@@ -55,7 +56,7 @@ function main() {
     Game.story = Story.buildFromLevel();
 
     // TODO: untangle this
-    Game.map.addEntities(Game.story.getEntities());
+    Game.map.addEntities(Game.story.getActors());
     Game.map.addEntity(Game.player);
 
     // TODO: stage/state encapsulation

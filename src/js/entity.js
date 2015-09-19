@@ -50,19 +50,6 @@ Entity.prototype.getY = function() {
 	return this.y;
 }
 
-Entity.prototype.talk = function() {
-	Game.story = this.story;
-}
-
-Entity.prototype.takeTurn = function() {
-	// TODO: check if player is in the same room before wandering
-	if (this.mood == 'anxious') {
-		return this.behaviour.wander();
-	}
-
-	return this.behaviour.rest();
-}
-
 Entity.prototype.moveTo = function(x, y) {
 	var toX = this.x + x;
 	var toY = this.y + y;
