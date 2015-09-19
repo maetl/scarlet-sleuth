@@ -1,9 +1,6 @@
 var Entity = function(properties) {
 	properties = properties || {};
 
-	this.glyph = properties['glyph'] || '@';
-	this.color = properties['color'] || '#fff';
-
 	this.x = properties['x'] || 0;
   this.y = properties['y'] || 0;
 
